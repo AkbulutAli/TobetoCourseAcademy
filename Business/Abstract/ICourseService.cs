@@ -1,16 +1,17 @@
-﻿using Entites.Concretes;
+﻿using Core.Utilities.Results;
+using Entites.Concretes;
 using System.Linq.Expressions;
 
 namespace Business.Abstract
 {
     public interface ICourseService
     {
-        List<Course> GetAll(Expression<Func<Course, bool>> filter = null);
-        Course Get(Expression<Func<Course, bool>> filter);
-        void Add(Course course);
-        void Update(Course course);
-        void Delete(Course course);
-        List<Course> GetByCategoryId(int categoryId);
+        IDataResult<List<Course>> GetAll(Expression<Func<Course, bool>> filter = null);
+        IDataResult<Course> Get(Expression<Func<Course, bool>> filter);
+        IResult Add(Course course);
+        IResult Update(Course course);
+        IResult Delete(Course course);
+        IDataResult<List<Course>> GetByCategoryId(int categoryId);
     }
 
 

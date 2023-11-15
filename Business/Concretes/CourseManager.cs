@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entites.Concretes;
 using System;
@@ -19,34 +21,38 @@ namespace Business.Concretes
             _courseDal = courseDal;
         }
 
-        public void Add(Course course)
+        public IResult Add(Course course)
         {
             _courseDal.Add(course);
+            return new SuccessResult(Messages.CourseAdded);
         }
 
-        public void Delete(Course course)
+        public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
+            return new SuccessResult(Messages.CourseAdded);// DÜZELTİLECEK
         }
 
-        public Course Get(Expression<Func<Course, bool>> filter)
+        public IDataResult<Course> Get(Expression<Func<Course, bool>> filter)
         {
-            return _courseDal.Get(filter);
+            return new SuccessDataResult < Course > (_courseDal.Get(filter));
         }
 
-        public List<Course> GetAll(Expression<Func<Course, bool>> filter = null)
+        public IDataResult<List<Course>> GetAll(Expression<Func<Course, bool>> filter = null)
         {
-            return _courseDal.GetAll(filter);
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(filter));
         }
 
-        public List<Course> GetByCategoryId(int categoryId)
+        public IDataResult<List<Course>> GetByCategoryId(int categoryId)
         {
-            return _courseDal.GetAll(p=> p.CategoryId == categoryId);
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(p=> p.CategoryId == categoryId));
         }
 
-        public void Update(Course course)
+        public IResult Update(Course course)
         {
             _courseDal.Update(course);
+            return new SuccessResult(Messages.CourseAdded);// DÜZELTİLECEK
+
         }
     }
 }

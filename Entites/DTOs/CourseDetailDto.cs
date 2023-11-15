@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Entites.DTOs
 {
-    internal class CourseDetailDto : IDto
+    public class CourseDetailDto : IDto
     {
         public int CourseId { get; set; }
         public string CourseName { get; set; }
         public string CategoryName { get; set; }
-       
+        public string InstructorName { get; set; }
+
     }
 }
