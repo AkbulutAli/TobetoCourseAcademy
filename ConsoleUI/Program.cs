@@ -25,7 +25,7 @@ namespace ConsoleUI
 
             Course course1 = new Course
             {
-                Name = "C#",
+                Name = "JAVASCRIPT",
                 CategoryId = 1,
                 InstructorId = 1,
                 Price = 0,
@@ -33,31 +33,27 @@ namespace ConsoleUI
                 ImageUrl = "www.google.com"
             };
 
-
             var result = courseManager.Add(course1);
+
             if (result.Success)
             {
-                Console.WriteLine("Ürün eklendi");
-                Console.WriteLine(result.Messages);
+                Console.WriteLine(course1.Name+" "+result.Message);
+
+                //var data = courseManager.GetAll().Data.OrderByDescending(x=>x.Id).Take(1);
+                //Console.WriteLine(data.ToList()[0].Name + " " + result.Message);
+
+                //foreach ( var x in data )
+                //{
+                //    Console.WriteLine(x.Name + " " + result.Message);
+                    
+                //}
+
             }
-            else
+            else 
             {
                 Console.WriteLine(result.Message);
             }
-            //Console.WriteLine(courseManager.Add(course1).Message);
 
-
-            //foreach (var item in courseManager.Add(course1))
-            //{
-            //    Console.WriteLine(item.Name);
-            //    Console.WriteLine(item.Price);
-            //    Console.WriteLine(item.Description);
-
-
-            //}
-
-
-            //Console.WriteLine(courseManager.GetByCategoryId(1)[0].Name);
         }
 
         private static void InstructorTest()

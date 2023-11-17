@@ -10,6 +10,8 @@ namespace Business.Constants
     public class Messages
     {
         public static string CourseAdded = "Kurs eklendi.";
-        public static string CoursesListed = "Kurslar listelendi";
+        public static string CourseDeleted = "Kurs silindi.";
+        public static string CourseUpdated = "Kurs güncellendi.";
+        public static string CoursesListed = "Kurslar listelendi.";
     }
 }

@@ -30,17 +30,17 @@ namespace Business.Concretes
         public IResult Delete(Course course)
         {
             _courseDal.Delete(course);
-            return new SuccessResult(Messages.CourseAdded);// DÜZELTİLECEK
+            return new SuccessResult(Messages.CourseDeleted);
         }
 
         public IDataResult<Course> Get(Expression<Func<Course, bool>> filter)
         {
-            return new SuccessDataResult < Course > (_courseDal.Get(filter));
+            return new SuccessDataResult < Course > (_courseDal.Get(filter),Messages.CoursesListed);
         }
 
         public IDataResult<List<Course>> GetAll(Expression<Func<Course, bool>> filter = null)
         {
-            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(filter));
+            return new SuccessDataResult<List<Course>>(_courseDal.GetAll(filter),Messages.CoursesListed);
         }
 
         public IDataResult<List<Course>> GetByCategoryId(int categoryId)
@@ -51,7 +51,7 @@ namespace Business.Concretes
         public IResult Update(Course course)
         {
             _courseDal.Update(course);
-            return new SuccessResult(Messages.CourseAdded);// DÜZELTİLECEK
+            return new SuccessResult(Messages.CourseUpdated);
 
         }
     }
