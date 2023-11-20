@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
+using DataAccess.Concretes.EntityFramework;
 using Entites.Concretes;
 using System;
 using System.Collections.Generic;
@@ -21,29 +24,38 @@ namespace Business.Concretes
             _categoryDal = categoryDal;
         }
 
-        public void Add(Category category)
+        public IResult Add(Category category)
         {
             _categoryDal.Add(category);
+            return new SuccessResult(Messages.CategoryAdded);
         }
 
-        public void Delete(Category category)
+        public IResult Delete(Category category)
         {
             _categoryDal.Delete(category);
+            return new SuccessResult(Messages.CategoryDeleted);
         }
 
-        public Category Get(Expression<Func<Category, bool>>filter)
+        public IDataResult<Category> Get(Expression<Func<Category, bool>>filter)
         {
-            return _categoryDal.Get(filter);
+            return new SuccessDataResult<Category>(_categoryDal.Get(filter), Messages.CategoryListed);
         }
 
-        public List<Category> GetAll(Expression<Func<Category, bool>> filter = null)
+        public IDataResult<List<Category>> GetAll(Expression<Func<Category, bool>> filter = null)
         {
-            return _categoryDal.GetAll(filter);
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(filter), Messages.CategoryListed);
+
         }
 
-        public void Update(Category category)
+        public IResult GetById(int id)
+        {
+            return new SuccessDataResult<Category>(_categoryDal.Get(c=>c.Id==id), Messages.CategoryListed);
+        }
+
+        public IResult Update(Category category)
         {
             _categoryDal.Update(category);
+            return new SuccessResult(Messages.CategoryUpdated);
         }
     }
 

@@ -48,6 +48,11 @@ namespace Business.Concretes
             return new SuccessDataResult<List<Course>>(_courseDal.GetAll(p=> p.CategoryId == categoryId));
         }
 
+        public IResult GetById(int id)
+        {
+            return new SuccessDataResult<Course>(_courseDal.Get(c=>c.Id==id),Messages.CoursesListed);
+        }
+
         public IResult Update(Course course)
         {
             _courseDal.Update(course);
