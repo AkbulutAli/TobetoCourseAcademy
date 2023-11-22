@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entites.Concretes;
+using Entites.DTOs;
 using System.Linq.Expressions;
 
 namespace Business.Abstract
@@ -12,7 +13,8 @@ namespace Business.Abstract
         IResult Update(Course course);
         IResult Delete(Course course);
         IDataResult<List<Course>> GetByCategoryId(int categoryId);
-        IResult GetById(int id);
+        IDataResult<List<CourseDetailDto>> GetDetails();
+        IDataResult<Course> GetById(int id);
 
     }
 

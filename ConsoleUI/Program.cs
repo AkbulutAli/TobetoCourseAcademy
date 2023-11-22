@@ -66,7 +66,7 @@ namespace ConsoleUI
             };
             instructorManager.Add(instructor1);
 
-            foreach (var item in instructorManager.GetAll())
+            foreach (var item in instructorManager.GetAll().Data)
             {
                 Console.WriteLine(item.Name);
             }
