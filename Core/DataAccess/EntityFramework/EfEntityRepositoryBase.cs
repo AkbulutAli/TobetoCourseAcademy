@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.EntityFramework
 {
-    public class EfEntityRepositoryBase<TEntity,TContex>:IEntityRepository<TEntity>
-        where TEntity : class, IEntity , new()
-        where TContex : DbContext , new()
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+        where TEntity : class, IEntity, new()
+        where TContext : DbContext, new()
     {
         public void Add(TEntity entity)
         {
-            //IDısposable pattern implementation of c#
-            using (TContex context = new TContex())
+            using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -26,7 +25,7 @@ namespace Core.DataAccess.EntityFramework
 
         public void Delete(TEntity entity)
         {
-            using (TContex context = new TContex())
+            using (TContext context = new TContext())
             {
                 var deletedEntity = context.Entry(entity);
                 deletedEntity.State = EntityState.Deleted;
@@ -36,30 +35,31 @@ namespace Core.DataAccess.EntityFramework
 
         public TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
-            using (TContex context = new TContex())
+            using (TContext context = new TContext())
             {
                 return context.Set<TEntity>().SingleOrDefault(filter);
-            }
 
+            }
         }
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            using (TContex context = new TContex())
+            using (TContext context = new TContext())
             {
                 return filter == null
-                    ? context.Set<TEntity>().ToList()
+                    ? context.Set<TEntity>().ToList() 
                     : context.Set<TEntity>().Where(filter).ToList();
             }
         }
 
         public void Update(TEntity entity)
         {
-            using (TContex context = new TContex())
+            using (TContext context = new TContext())
             {
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
+
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿
-using Business.Abstract;
+﻿using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
@@ -15,44 +14,44 @@ namespace Business.Concretes
 {
     public class InstructorManager : IInstructorService
     {
-        IInstructorDal _insturctorDal;
+        IInstructorDal _instructorDal;
 
         public InstructorManager(IInstructorDal insturctorDal)
         {
-            _insturctorDal = insturctorDal;
+            _instructorDal = insturctorDal;
         }
 
         public IResult Add(Instructor instructor)
         {
-            _insturctorDal.Add(instructor);
+            _instructorDal.Add(instructor);
             return new SuccessResult(Messages.InstructorAdded);
         }
 
         public IResult Delete(Instructor instructor)
         {
-            _insturctorDal.Delete(instructor);
+            _instructorDal.Delete(instructor);
             return new SuccessResult(Messages.InstructorDeleted);
         }
 
         public IDataResult<Instructor> Get(Expression<Func<Instructor, bool>> filter)
         {
-            return new SuccessDataResult<Instructor>(_insturctorDal.Get(filter),Messages.InstructorListed);
+            return new SuccessDataResult<Instructor>(_instructorDal.Get(filter),Messages.InstructorListed);
         }
 
         public IDataResult<List<Instructor>> GetAll(Expression<Func<Instructor, bool>> filter = null)
         {
-            return new SuccessDataResult<List<Instructor>>(_insturctorDal.GetAll(filter), Messages.InstructorListed);
+            return new SuccessDataResult<List<Instructor>>(_instructorDal.GetAll(filter), Messages.InstructorListed);
         }
 
         public IDataResult<Instructor> GetById(int id)
         {
-            return new SuccessDataResult<Instructor>(_insturctorDal.Get(i=>i.Id==id),Messages.InstructorListed);
+            return new SuccessDataResult<Instructor>(_instructorDal.Get(i=>i.Id==id),Messages.InstructorListed);
 
         }
 
         public IResult Update(Instructor instructor)
         {
-            _insturctorDal.Update(instructor);
+            _instructorDal.Update(instructor);
             return new SuccessResult(Messages.InstructorUpdated);
         }
     }

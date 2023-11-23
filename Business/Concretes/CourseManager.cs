@@ -1,18 +1,13 @@
 ﻿using Business.Abstract;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entites.Concretes;
 using Entites.DTOs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using Core.Aspects.Autofac.Validation;
+
 
 namespace Business.Concretes
 {
@@ -24,9 +19,8 @@ namespace Business.Concretes
         {
             _courseDal = courseDal;
         }
-
-        [ValidationAspect(typeof(CourseValidator))]
-        public IResult Add(Course course)
+		[ValidationAspect(typeof(CourseValidator))]
+		public IResult Add(Course course)
         {
             _courseDal.Add(course);
             return new SuccessResult(Messages.CourseAdded);

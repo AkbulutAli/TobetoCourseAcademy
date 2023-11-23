@@ -7,14 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Entites\Entites.csproj" />
+    <PackageReference Include="Autofac" Version="7.1.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="7.1.0" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.1.0" />
-    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="7.1.0" />
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    <ProjectReference Include="..\Entites\Entites.csproj" />
   </ItemGroup>
 
 </Project>

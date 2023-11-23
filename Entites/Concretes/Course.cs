@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Entites.Concretes
 {
     public class Course : IEntity
-    {
+    {       
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public int InstructorId { get; set; }
