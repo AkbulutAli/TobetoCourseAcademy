@@ -10,7 +10,6 @@ namespace Entites.Concretes
 {
     public class Course : IEntity
     {
-        [Key]
         public int Id { get; set; }
         public int CategoryId { get; set; }
         public int InstructorId { get; set; }

@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿
+using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Business.Concretes
 {
-    public class InstructorManager : IInsturctorService
+    public class InstructorManager : IInstructorService
     {
         IInstructorDal _insturctorDal;
 
@@ -43,7 +44,7 @@ namespace Business.Concretes
             return new SuccessDataResult<List<Instructor>>(_insturctorDal.GetAll(filter), Messages.InstructorListed);
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Instructor> GetById(int id)
         {
             return new SuccessDataResult<Instructor>(_insturctorDal.Get(i=>i.Id==id),Messages.InstructorListed);
 

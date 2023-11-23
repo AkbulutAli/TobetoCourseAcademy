@@ -47,7 +47,7 @@ namespace Business.Concretes
 
         }
 
-        public IResult GetById(int id)
+        public IDataResult<Category> GetById(int id)
         {
             return new SuccessDataResult<Category>(_categoryDal.Get(c=>c.Id==id), Messages.CategoryListed);
         }

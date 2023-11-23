@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public class EfIntructorDal : EfEntityRepositoryBase<Instructor,TobetoCourseAcademyContext>,IInstructorDal
+    public class EfInstructorDal : EfEntityRepositoryBase<Instructor,TobetoCourseAcademyContext>,IInstructorDal
     {
        
     }
