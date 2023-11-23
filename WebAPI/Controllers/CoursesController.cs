@@ -65,7 +65,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("delete")]
+        [HttpDelete("delete")]
         public IActionResult Delete(int id)
         {
             var deletedCourse = _courseService.GetById(id).Data;
